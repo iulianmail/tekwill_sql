@@ -4,3 +4,10 @@ GitHub Repo,
 GitBash, 
 Working Folder structure, 
 Docs shareing
+
+git commands:
+
+git add lesson1/
+git status
+git commit -am "my comment"
+git push
