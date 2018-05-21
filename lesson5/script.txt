@@ -1,0 +1,56 @@
+
+
+
+select first_name,
+    salary +300
+from EMPLOYEES
+
+select 10+15-7+20*7 from dual
+
+/* comentariu pentru mai multe randuri */
+-- comentariu pentru un rand
+
+select EMAIL from employees 
+select distinct JOB_ID from employees 
+
+describe employees
+
+SELECT * FROM employees
+select employee_id, salary*1.1 AS salary_increase, salary*12 AS annual_salary, first_name, last_name from employees 
+
+select FIRST_NAME||' '||LAST_NAME as full_name, phone_number from employees
+
+select MANAGER_ID ||' '||JOB_ID from employees
+
+select MANAGER_ID ||'this is ok'||JOB_ID from employees
+select first_name || q'[@gmail.com]' from employees
+select 'gmail.com' ||' '||first_name nume_familie from employees
+SELECT distinct department_id FROM employees
+
+select distinct salary from employees
+
+select distinct faculty_id from ad_faculty_course_details
+
+select course_id from ad_faculty_course_details order by 1;
+
+
+describe ad_faculty_course_details
+
+select salary from ad_faculty_details
+
+select * from ad_faculty_details order by 3 desc
+
+select * from employees where department_id=90
+
+select * from employees where LAST_name like 'K%'
+
+select sysdate from dual
+
+select  EMPLOYEE_ID from employees where COMMISSION_PCT is null
+
+select * from employees where last_name=;
+
+select * from employees where salary between 1000 and 5000
+select * from employees where salary >=1000 and salary <5000
+
+select * from employees where hire_date between '01-JAN-11' and '01-JAN-15' order by 6 desc
