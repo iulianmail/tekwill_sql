@@ -133,3 +133,185 @@ where FIRST_NAME like '_O%'
 
 select FIRST_NAME from ad_student_details
 where FIRST_NAME like '%A%' or FIRST_NAME like '%N%'
+
+
+
+select employee_id, first_name
+from employees
+order by employee_id
+fetch first 5 rows only
+
+select * from employees
+where employee_id=&emp_id
+
+select first_name, last_name, &column
+from employees
+where employee_id=&emp_id
+order by &number
+
+
+select first_name, hire_date
+from employees
+where hire_date='&hire_date'
+
+select first_name, last_name, &&column
+from employees
+where &&column='&value'
+
+define employee_num=200
+
+select employee_id, last_name, salary, department_id
+from employees
+where employee_id=&employee_num
+
+undefine employee_num
+
+
+select first_name, last_name, email, lower (first_name) as first_name
+from employees
+
+select first_name, last_name, email, lower (email)
+from employees
+
+select first_name, last_name, email, initcap(email)
+from employees
+
+
+select EMAIL,
+INSTR (EMAIL,'O',1,2)
+from employees
+order by 2 desc
+
+select * from employees
+
+select FIRST_NAME
+     -- ,INSTR(first_name,'e',1,1)
+      ,substr (FIRST_NAME,INSTR(lower(first_name),'e',1,1),1)
+from employees
+
+select first_name,
+lpad(first_name,)
+from employees
+
+select PHONE_NUMBER,
+trim (leading 6 from PHONE_NUMBER)
+from employees
+
+
+select round (124.45887, 2),
+mod (100,7)
+
+from dual
+
+select sysdate from dual
+
+select sysdate, sessiontimezone, current_date, current_timestamp from dual
+
+select last_name, round((sysdate-hire_date)/7,2) as weeks
+
+from employees
+
+select first_name,
+
+to_char(hire_date,'DD.MM.YYYY')
+
+from employees
+
+select last_name, 
+to_char(hire_date, 'fmDD Month YYYY'),
+to_char(hire_date, 'DD Month YYYY'),
+to_char(hire_date, 'DDspth "of" month YYYY')
+from employees
+
+select to_char(123, 'L999')
+from dual
+
+
+select last_name, hire_date
+from employees
+where hire_date > to_date('May 24, 2015', 'fxMonth DD, YYYY')
+
+select *
+from employees
+where employee_id > To_number('150')
+
+select last_name, hire_date, to_date('May 24, 2015', 'Month DD, YYYY')
+from employees
+where hire_date > to_date('May 24, 2015', 'Month DD, YYYY')
+
+select last_name, 
+to_char(hire_date,'DD.MM.YYYY')
+from employees
+where hire_date < to_date(to_char(sysdate,'DD.MM.YYYY'), 'DD.MM.YYYY')
+
+select last_name, salary, NVL(commission_pct, 0),
+
+from employees
+
+select nullif(11,10),
+coalesce (commission_pct,manager_id,department_id)
+from employees
+
+select avg(salary), max (salary),
+min(salary), sum(salary)
+from employees
+where job_id like '%REP%'
+
+select min(hire_date), max(hire_date)
+from employees
+
+
+select min(last_name), max(last_name)
+from employees
+
+select count(distinct department_id)
+from employees
+
+
+select department_id, avg(salary), job_id
+from employees
+group by department_id, job_id
+order by avg(salary) desc
+
+select department_id, avg(salary), job_id
+from employees
+having avg(salary)>10000
+group by department_id, job_id
+order by avg(salary) desc
+
+select round(max(avg(salary)),2)
+from employees
+group by department_id
+
+
+select job_id, count(job_id)
+from employees
+group by job_id
+having count(job_id) >1
+order by 2 desc
+
+select *
+from employees
+ join  departments
+ using (department_id)
+
+
+select employee_id, last_name, first_name, department_name, job_title
+from employees
+join  departments
+ using (department_id)
+ join jobs
+ using (job_id)
+ join locations
+ using (location_id)
+ 
+ select department_id
+ from employees e
+ join departments
+ using (department_id)
+ 
+ select *
+ from employees t1
+ join employees t2
+ on t1.manager_id=t2.employee_id
+ 

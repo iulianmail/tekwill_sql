@@ -1,0 +1,34 @@
+select * from ad_student_details
+
+select first_name, round((sysdate-STUDENT_REG_YEAR)/30) as MONTHS_COMPLETED,
+months_between(sysdate,STUDENT_REG_YEAR)
+from ad_student_details
+
+
+select first_name, round((sysdate-STUDENT_REG_YEAR)/7,2) as WEEKS_COMPLETED,
+trunc ((sysdate-STUDENT_REG_YEAR)/7) as WEEKS_COMPLETED2
+from ad_student_details
+where EMAIL_ADDR is null
+order by 2 desc
+
+select * from ad_student_details
+
+select * from ad_exam_results
+
+select STUDENT_ID, MARKS, to_char(Marks, '$99') Prize_amount
+from ad_exam_results
+where MARKS>90
+
+select * from ad_exam_type
+
+select exam_type,
+case when EXAM_TYPE='MCE' then 'OBJECTIVE'
+when EXAM_TYPE='TF' then 'OBJECTIVE'
+when EXAM_TYPE='FIB' then 'OBJECTIVE'
+when EXAM_TYPE='ESS' then 'SUBJECTIVE'
+when EXAM_TYPE='SA' then 'SUBJECTIVE'
+when EXAM_TYPE='PS' then 'ANALYTICAL'
+when EXAM_TYPE='LAB' then 'PRACTICAL'
+ELSE 'NOT PERMITTED'
+END "Nature of Exam"
+FROM ad_exam_type;
